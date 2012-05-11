@@ -12,7 +12,7 @@ class icinga::master inherits icinga {
 
 	# Bug: 3299
 	exec { 'fix-permissions':
-		command     => 'chmod -R go+r /etc/icinga/objects',
+		command     => '/bin/chmod -R go+r /etc/icinga/objects',
 		refreshonly => true,
 		notify      => Service['icinga'],
 	}
