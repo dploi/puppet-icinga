@@ -5,8 +5,8 @@ class icinga::master inherits icinga {
 	include icinga::service
 
 	exec { 'external-commands':
-		command => 'dpkg-statoverride --update --add nagios nagios 751 /var/lib/icinga && dpkg-statoverride --update --add nagios www-data 2710 /var/lib/icinga/rw',
-		unless  => 'dpkg-statoverride --list nagios nagios 751 /var/lib/icinga && dpkg-statoverride --list nagios www-data 2710 /var/lib/icinga/rw',
+		command => '/usr/bin/dpkg-statoverride --update --add nagios nagios 751 /var/lib/icinga && /usr/bin/dpkg-statoverride --update --add nagios www-data 2710 /var/lib/icinga/rw',
+		unless  => '/usr/bin/dpkg-statoverride --list nagios nagios 751 /var/lib/icinga && /usr/bin/dpkg-statoverride --list nagios www-data 2710 /var/lib/icinga/rw',
 		notify  => Service['icinga'],
 	}
 
