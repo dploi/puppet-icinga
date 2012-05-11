@@ -36,7 +36,9 @@ class icinga::master inherits icinga {
 		mode    => '0644',
 		alias   => 'configs',
 		notify  => Service['icinga'],
-		source  => "puppet:///modules/icinga/${::lsbdistcodename}/etc/icinga",
+		source  => [	"puppet:///modules/icinga/${::lsbdistcodename}/etc/icinga",
+				"puppet:///modules/icinga/${::lsbdistid}/etc/icinga"
+		],
 		require => Package['icinga'],
 	}
 
